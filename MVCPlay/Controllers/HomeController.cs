@@ -26,5 +26,40 @@ namespace MVCPlay.Controllers
 
             return View();
         }
+
+        public ActionResult Test()
+        {
+            ViewBag.Message = "Your test page.";
+            ViewBag.Answer = "Waiting for input";
+            return View();
+        }
+        public ActionResult SecondTest()
+        {
+            return View();
+        }
+        
+        public ActionResult GetData()
+        {
+            return Json(new { foo = "bar", baz = "Blech" }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult Test(int n1, int n2)
+        {
+            ViewBag.Answer = n1 + n2;
+            return View();
+        }
+
+
+
+        public JsonResult Data()
+        {
+            var users = new
+            {
+                id = 1,
+                name = 23
+            };
+            return Json(users, JsonRequestBehavior.AllowGet);
+        }
     }
 }
